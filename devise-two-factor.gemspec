@@ -2,15 +2,15 @@ $:.push File.expand_path('../lib', __FILE__)
 require 'devise_two_factor/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'devise-two-factor'
+  s.name        = 'zenna-devise-two-factor'
   s.version     = DeviseTwoFactor::VERSION.dup
   s.platform    = Gem::Platform::RUBY
   s.licenses    = ['MIT']
-  s.summary     = 'Barebones two-factor authentication with Devise'
+  s.summary     = "Zenna's forked two-factor authentication with Devise - uses Symmetric Encryption instead of AttrEncrypted"
   s.email       = 'engineers@tinfoilsecurity.com'
   s.homepage    = 'https://github.com/tinfoil/devise-two-factor'
-  s.description = 'Barebones two-factor authentication with Devise'
-  s.authors     = ['Shane Wilton']
+  s.description = "Zenna's forked two-factor authentication with Devise - uses Symmetric Encryption instead of AttrEncrypted"
+  s.authors     = ['Landon Clark - Zenna', 'Shane Wilton - Original Gem']
 
   s.cert_chain  = [
                     'certs/tinfoil-cacert.pem',
@@ -26,9 +26,9 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'railties',       '< 5.1'
   s.add_runtime_dependency 'activesupport',  '< 5.1'
-  s.add_runtime_dependency 'attr_encrypted', '>= 1.3', '< 4', '!= 2'
   s.add_runtime_dependency 'devise',         '~> 4.0'
   s.add_runtime_dependency 'rotp',           '~> 2.0'
+  s.add_runtime_dependency 'symmetric-encryption', '~>4.0'
 
   s.add_development_dependency 'activemodel'
   s.add_development_dependency 'appraisal'

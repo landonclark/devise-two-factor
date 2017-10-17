@@ -1,3 +1,9 @@
+# Warning: This is a fork
+The original version of this gem used the attr_encrypted gem. That gem cannot co-exist with the Symmetric Encryption gem which Zenna already uses.  
+
+Due to the great original design of the gem and the close API between Symmetric Encryption and AttrEncrypted, this is a very simple change.  Unfortunately, it might only support the subset of the functionality that we use. That subset is tested in the app that uses this gem so the specs aren't updated yet.
+
+Because we renamed the gem, you have to add this to your `Gemfile` and also `require 'devise-two-factor'`.
 # Devise-Two-Factor Authentication
 By [Tinfoil Security](http://tinfoilsecurity.com/)
 

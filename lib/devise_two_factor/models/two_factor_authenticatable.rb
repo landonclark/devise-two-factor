@@ -1,4 +1,4 @@
-require 'attr_encrypted'
+require 'symmetric-encryption'
 require 'rotp'
 
 module Devise
@@ -8,15 +8,8 @@ module Devise
       include Devise::Models::DatabaseAuthenticatable
 
       included do
-        unless singleton_class.ancestors.include?(AttrEncrypted)
-          extend AttrEncrypted
-        end
-
-        unless attr_encrypted?(:otp_secret)
-          attr_encrypted :otp_secret,
-            :key  => self.otp_secret_encryption_key,
-            :mode => :per_attribute_iv_and_salt unless self.attr_encrypted?(:otp_secret)
-        end
+        SymmetricEncryption::Generator.generate_decrypted_accessors(self, "otp_secret", "encrypted_otp_secret", {})
+        encrypted_attributes[:otp_secret] = :encrypted_otp_secret
 
         attr_accessor :otp_attempt
       end
